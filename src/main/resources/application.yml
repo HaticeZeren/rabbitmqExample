@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-boot-rabbitmq #uygulama ismi
+  rabbitmq:
+    hostname: localhost #rabbitmq sunucu adresi(Lokal)
+    port: 15672 #rabbitmq varsayılan port bilgisi
+    username: guest #rabbitmq varsayılan username bilgisi
+    password: guest
+    notification:
+      exchange: E_NOTIFICATION #Exchange'in adı (E_NOTIFICATION).Producer, mesajı E_NOTIFICATION exchange’ine gönderir.
+      queue: Q_CAMPAIGN_NOTIFICATION # Kuyruğun adı (Q_CAMPAIGN_NOTIFICATION).Consumer, Q_CAMPAIGN_NOTIFICATION adlı kuyruktan okur.
+      routekey: notification #Routing Key (notification).Direct Exchange olarak tanımlı.Exchange ile kuyruk routing key (notification) kullanılarak bağlanır.
+
+#Spring Boot Actuator için yönetim endpointlerini açar.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #Tüm Actuator endpointlerini açar.
